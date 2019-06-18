@@ -1,8 +1,8 @@
 const config = {
-  "ownerID": "279282069304246272",
+  "ownerID": "1234567890",
   "admins": [],
   "support": [],
-  "token": "NDY1Njk2NTEyMjI0MjY0MTky.XQBSww.RUvscV61coKQy-VYHHCssquX6QA",
+  "token": "discord_bot_token",
   "defaultSettings": {
     "prefix": "-",
     "modRole": "moderator",
