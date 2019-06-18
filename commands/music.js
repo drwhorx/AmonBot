@@ -193,10 +193,10 @@ exports.run = async (bot, message, args, level) => {
     async function play() {
         var song = queue[playing]
         queue[playing].status = "PLAYING"
-        console.log("here")
         dispatcher = connection.playStream(ytdl(song.link, {
             filter: "audioonly"
         })).on("end", async reason => {
+            console.log(reason)
             queue[playing].status = "QUEUE"
             if (reason == "user") return;
             if (playing + 2 > queue.length) playing = 0;
