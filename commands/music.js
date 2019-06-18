@@ -228,7 +228,7 @@ exports.run = async (bot, message, args, level) => {
                         })
                         await removeReaction(m, msg, chosen);
                         return awaitReactions(msg, m, filter);
-                    } 
+                    }
                     if (connection == undefined) connection = await (await presence()).join();
                 }
                 if (["▶", "⏸", "⏭", "⏮", "ℹ", "↗", "📼"].includes(chosen)) {
@@ -422,7 +422,7 @@ exports.run = async (bot, message, args, level) => {
                         var result = await reqmessage(m, {
                             title: "Choose a result:",
                             text: text,
-                            check: ans => ans - 1 != NaN && ans - 1 >= 0 && ans - 1 < queue.length,
+                            check: ans => ans - 1 != NaN && ans - 1 >= 0 && ans - 1 < results.length,
                             failed: "Invalid Position!"
                         })
                         if (result == undefined) {
@@ -460,10 +460,11 @@ exports.run = async (bot, message, args, level) => {
                     for (i = 0; i < vids.length; i++) {
                         queue.splice(pos - 1, 0, vids[i])
                     }
-                    await sendmessage(m, {
-                        title: `${vids.length} video${vids.length == 1 ? "" : "s"} added to the queue!`,
-                        succeed: true
-                    })
+                    if (vids.length != 0)
+                        await sendmessage(m, {
+                            title: `${vids.length} video${vids.length == 1 ? "" : "s"} added to the queue!`,
+                            succeed: true
+                        })
 
                     await removeReaction(m, msg, chosen);
                     return awaitReactions(msg, m, filter);
