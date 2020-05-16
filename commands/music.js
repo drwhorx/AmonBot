@@ -3,7 +3,7 @@ exports.run = async (bot, message, args, level) => {
     const fs = require('fs');
     const ytdl = require('ytdl-core');
     const YouTube = require('simple-youtube-api')
-    const youtube = new YouTube('AIzaSyAICI9DWEEyuyxxltxQQDSclc-mkNzbbj4');
+    const youtube = new YouTube(bot.config.yt_key);
     const ytlist = require('youtube-playlist');
     const titleCard = new Discord.RichEmbed()
         .setTitle("AmonBot Music Panel!")

@@ -1,13 +1,13 @@
 const { inspect } = require("util");
-exports.run = async (bot, message, args, level) => {
+exports.run = async(bot, message, args, level) => {
     const Discord = require("discord.js")
     const settings = message.settings = bot.getGuildSettings(message.guild);
     const list = settings.givemelist;
-    const splits = list.split(",");
+    const splits = JSON.parse(list);
     if (!bot.settings.has(message.guild.id)) bot.settings.set(message.guild.id, {});
     if (args[0] == "list") {
         var listEmbed = new Discord.RichEmbed();
-        const roles = splits.join("\n");
+        const roles = splits.length == 0 ? "none" : splits.join("\n");
         listEmbed.addField("Roles for this server:", roles);
         listEmbed.setThumbnail(message.guild.iconURL);
         listEmbed.setFooter(`Roles available on ${message.guild.name}`);
@@ -30,10 +30,7 @@ exports.run = async (bot, message, args, level) => {
             }
         }
 
-        if (splits[0] == "none" && roles.length > 1) {
-            splits = splits.slice(1)
-        }
-        var updated = splits.concat(roles).join(",")
+        var updated = JSON.stringify(splits.concat(roles));
         bot.settings.setProp(message.guild.id, "givemelist", updated);
 
         var added = roles.sentence()
@@ -72,10 +69,10 @@ exports.run = async (bot, message, args, level) => {
             }
         }
 
-        var updated = splits.filter((e) => {
+        var updated = JSON.stringify(splits.filter((e) => {
             return roles.indexOf(e) == -1
-        }).join(",")
-        if (updated.length == 0) updated = "none";
+        }))
+
         bot.settings.setProp(message.guild.id, "givemelist", updated);
 
         var deleted = roles.sentence()

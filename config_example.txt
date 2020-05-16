@@ -3,6 +3,8 @@ const config = {
   "admins": [],
   "support": [],
   "token": "discord_bot_token",
+  "yt_key": "youtube_api_key",
+  "tba_key": "tba_api_key",
   "defaultSettings": {
     "prefix": "-",
     "modRole": "moderator",

@@ -1,7 +1,7 @@
 exports.run = async (bot, message, args, level) => {
     const Discord = require('discord.js');
     const TBA = require('tba-api-storm');
-    let req = new TBA("wFLfqneHnQeMApDRSJnAvtS1egVMBQzXxn2E6vGW0DuGy3HhRYztR8tGJvbdBX0G");
+    let req = new TBA(bot.config.tba_key);
     var curYear = new Date().getFullYear();
     var query = args[0];
     var teamNumber = args[1];
