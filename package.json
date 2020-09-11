@@ -34,7 +34,7 @@
     "libxmljs": "0.18.7",
     "moment": "^2.20.1",
     "moment-duration-format": "^2.2.0",
-    "node-fetch": "^2.2.0",
+    "node-fetch": "^2.6.1",
     "node-wolfram": "0.0.1",
     "onoff": "^3.1.0",
     "opusscript": "0.0.6",
